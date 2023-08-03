@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('chat.index');
+})->name('home');
+
+Route::prefix('auth')->namespace('Auth')->name('auth.')->group(function(){
+    Route::get('register', [RegisterController::class, 'showRegisterationForm'])->name('register.form');
+    Route::post('register', [RegisterController::class, 'register'])->name('register');
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');
+    Route::post('login', [LoginController::class, 'login'])->name('login');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+
