@@ -24,13 +24,13 @@ export default {
             this.messages = response.data
         })
 
-        this.emitter.on('message.added', (message) => {
+        emitter.on('message.added', (message) => {
             this.messages.unshift(message)
             if (message.ownMessage) {
                 this.$refs.messages.scrollTop = 0
             }
         })
-        this.emitter.on('message.removed', (message) => {
+        emitter.on('message.removed', (message) => {
             this.removeMessage(message.id)
         })
     }

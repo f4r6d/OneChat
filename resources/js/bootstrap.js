@@ -31,3 +31,8 @@ window.Echo = new Echo({
     enabledTransports: ['ws', 'wss'],
 });
 
+
+import mitt from 'mitt'
+const emitter = mitt()
+
+window.emitter = emitter

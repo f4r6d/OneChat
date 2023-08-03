@@ -1,6 +1,6 @@
 <template>
     <div class="chat">
-        <h2>chat comp</h2>
+        <h2>Chat Messages:</h2>
         <messages></messages>
     </div>
     <br>
@@ -45,11 +45,11 @@ export default {
                 return;
             }
             let tempMessage = this.buildTempMessage()
-            this.emitter.emit('message.added', tempMessage)
+            emitter.emit('message.added', tempMessage)
 
             axios.post('/messages', { body: this.body.trim() }).catch(() => {
                 this.body = this.bodyBackup
-                this.emitter.emit('message.removed', tempMessage)
+                emitter.emit('message.removed', tempMessage)
             })
 
 
