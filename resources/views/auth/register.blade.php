@@ -8,7 +8,7 @@
     </div>
     <div class="card-body">
 
-        <form action="{{ route('auth.register') }}" method="post">
+        <form action="{{ route('register') }}" method="post">
             @csrf
             <label for="name">name</label>
             <input type="text" name="name" class="form-control"><br>

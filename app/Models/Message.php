@@ -14,6 +14,15 @@ class Message extends Model
         'body',
     ];
 
+    protected $appends = [
+        'ownMessage',
+    ];
+
+    public function getOwnMessageAttribute()
+    {
+        return $this->user_id === auth()->user()->id;
+    }
+
     public function user() : BelongsTo
     {
         return $this->BelongsTo(User::class);

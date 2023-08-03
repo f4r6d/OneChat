@@ -17,8 +17,8 @@
           Register/Login
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ route('auth.register.form') }}">Register</a>
-          <a class="dropdown-item" href="{{ route('auth.login.form') }}">Login</a>
+          <a class="dropdown-item" href="{{ route('register.form') }}">Register</a>
+          <a class="dropdown-item" href="{{ route('login.form') }}">Login</a>
         </div>
       </li>
       @endguest
@@ -29,7 +29,7 @@
           {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
+          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
         </div>
       </li>
       @endauth

@@ -3,14 +3,63 @@
         <h2>chat comp</h2>
         <messages></messages>
     </div>
+    <br>
+    <form action="" method="post">
+        <textarea cols="30" rows="3" v-model="body" @keydown="handleMessageInput" autofocus></textarea>
+    </form>
 </template>
 
 <script>
-export default{
+import axios from 'axios';
+import moment from 'moment'
+export default {
+    data() {
+        return {
+            body: null,
+            bodyBackup: null,
+        }
+    },
+    methods: {
+        handleMessageInput(e) {
+            this.bodyBackup = this.body
+            if (e.keyCode === 13 && !e.shiftKey) {
+                e.preventDefault();
+                this.send()
+            }
+
+        },
+        buildTempMessage() {
+            let tempId = Date.now()
+            return {
+                id: tempId,
+                body: this.body,
+                created_at: moment().format('YYYY-MM-DD HH:mm'),
+                ownMessage: true,
+                user: {
+                    name: user.name
+                }
+            }
+        },
+        send() {
+            if (!this.body || this.body.trim() === '') {
+                return;
+            }
+            let tempMessage = this.buildTempMessage()
+            this.emitter.emit('message.added', tempMessage)
+
+            axios.post('/messages', { body: this.body.trim() }).catch(() => {
+                this.body = this.bodyBackup
+                this.emitter.emit('message.removed', tempMessage)
+            })
+
+
+            this.body = null
+
+
+        }
+    }
 
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
