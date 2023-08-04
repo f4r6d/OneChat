@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MessageController;
+use App\Models\Location;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::redirect('/','points')->name('home');
+
+Route::get('chat', function () {
     return view('chat.index');
-})->name('home')->middleware('auth');
+})->name('chat')->middleware('auth');
 
 Route::prefix('auth')->namespace('Auth')->group(function(){
     Route::get('register', [RegisterController::class, 'showRegisterationForm'])->name('register.form');
@@ -31,4 +35,9 @@ Route::prefix('auth')->namespace('Auth')->group(function(){
 Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
 Route::post('messages', [MessageController::class, 'store'])->name('messages.store');
 
+
+Route::get('points', [LocationController::class, 'index'])->name('locations.index');
+Route::post('points', [LocationController::class, 'store'])->name('locations.store');
+Route::post('delpoint', [LocationController::class, 'destroy'])->name('locations.destroy');
+Route::get('delpoints', function () {Location::truncate(); return back();});
 

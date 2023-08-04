@@ -19,7 +19,6 @@ export default {
 
     mounted() {
         emitter.on('users.here', (users) => {
-            console.log('hi')
             this.users = users
         })
         emitter.on('users.joined', (user) => {

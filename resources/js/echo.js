@@ -1,7 +1,6 @@
 
 Echo.join('chat')
 .here((users)=>{
-    console.log(users)
     emitter.emit('users.here', users)
 })
 .joining((user)=>{

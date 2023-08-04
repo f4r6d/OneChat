@@ -1,11 +1,11 @@
 <template>
     <div class="chat">
-        <h2>Chat Messages:</h2>
+        <h2 style="background-color:cyan;opacity:0.5">Chat Messages:</h2>
         <messages></messages>
     </div>
     <br>
     <form action="" method="post">
-        <textarea cols="30" rows="3" v-model="body" @keydown="handleMessageInput" autofocus></textarea>
+        <textarea cols="120" rows="3" v-model="body" @keydown="handleMessageInput" autofocus></textarea>
     </form>
 </template>
 

@@ -1,13 +1,13 @@
 @extends('layout')
 
 @section('content')
-<div id="app">
+<div id="app" >
 
-    <div class="column">
+    <div class="column"  >
 
         <chat></chat>
     </div>
-    <div class="column">
+    <div class="column" style="background-color:cyan;opacity:0.5">
 
         <users></users>
     </div>
