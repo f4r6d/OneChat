@@ -21,6 +21,7 @@ export default {
     },
     methods: {
         handleMessageInput(e) {
+            console.log(e.keyCode)
             this.bodyBackup = this.body
             if (e.keyCode === 13 && !e.shiftKey) {
                 e.preventDefault();

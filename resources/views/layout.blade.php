@@ -23,15 +23,13 @@
             float: left;
         }
 
-        
+
         body {
             background-image: url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/football-ground-design-template-6fb865eb3cb7093b8a9588e9a95e3b9e_screen.jpg?');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
-        
-    
     </style>
     <title>OneChat</title>
 
@@ -59,14 +57,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <script>
-        window.user = {
-            !!
+        window.user = {!!
             json_encode([
-                'authenticated' => auth() - > check(),
-                'id' => auth() - > check() ? auth() - > user() - > id : null,
-                'name' => auth() - > check() ? auth() - > user() - > name : null,
-            ]);!!
-        }
+                'authenticated' => auth()->check(),
+                'id' => auth()->check() ? auth()->user()->id : null,
+                'name' => auth()->check() ? auth()->user()->name : null,
+            ]);
+            !!}
     </script>
 </body>
 
