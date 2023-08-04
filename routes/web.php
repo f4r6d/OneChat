@@ -39,5 +39,5 @@ Route::post('messages', [MessageController::class, 'store'])->name('messages.sto
 Route::get('points', [LocationController::class, 'index'])->name('locations.index');
 Route::post('points', [LocationController::class, 'store'])->name('locations.store');
 Route::post('delpoint', [LocationController::class, 'destroy'])->name('locations.destroy');
-Route::get('delpoints', function () {Location::truncate(); return back();});
+Route::get('delpoints', [LocationController::class, 'reset']);
 

@@ -23,3 +23,5 @@ Broadcast::channel('chat', function($user) {
         'name'=> $user->name,
     ];
 });
+
+
