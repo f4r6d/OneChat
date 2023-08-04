@@ -25,7 +25,7 @@ class LocationController extends Controller
             'loc' => $request->loc,
         ]);
 
-        broadcast(new PointEdited($point));
+        broadcast(new PointEdited($point))->toOthers();
 
         return response()->json($point, 200);
     }
@@ -34,7 +34,7 @@ class LocationController extends Controller
     {
         $point = Location::where('loc', (string) $request->loc)->first();
         
-        broadcast(new PointEdited($point));
+        broadcast(new PointEdited($point))->toOthers();
 
         $point->delete();
 
@@ -45,7 +45,7 @@ class LocationController extends Controller
     {
         Location::truncate();
         
-        broadcast(new PointEdited());
+        broadcast(new PointEdited())->toOthers();
 
         return back();
     }
